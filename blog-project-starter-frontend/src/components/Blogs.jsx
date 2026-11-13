@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
+import { useState,useEffect } from 'react';
+
 import axios from "axios"
 import Footer from './common/Footer';
 
@@ -18,7 +18,7 @@ function Blogs() {
 
         if(user){
 
-            if(user.uid=="ri8mpWQCLzeBXI0TsfjtilZUZK33"){
+            if(user.uid==="ri8mpWQCLzeBXI0TsfjtilZUZK33"){
                 console.log("you is admin")
                 setadmin(true)
             
@@ -33,7 +33,7 @@ function Blogs() {
 
     })
         
-        axios.get("http://localhost:5000/api/blogs").then((res) => {
+        axios.get("https://blogs-prc7.onrender.com/api/blogs").then((res) => {
             console.log(res.data)
             setBlogs(res.data)
         }).catch(() => {
@@ -49,10 +49,10 @@ function Blogs() {
 
     const handleLike = async (blog_id) => {
         try {
-            const response = await axios.patch(`http://localhost:5000/api/blogs/like/${blog_id}`);
+            const response = await axios.patch(`https://blogs-prc7.onrender.com/api/blogs/like/${blog_id}`);
             // After successfully updating the likes count in the backend, fetch the updated list of blogs
             if (response.status === 200) {
-                axios.get("http://localhost:5000/api/blogs").then((res) => {
+                axios.get("https://blogs-prc7.onrender.com/api/blogs").then((res) => {
                     console.log(res.data)
                     setBlogs(res.data)
                 }).catch(() => {
@@ -71,10 +71,10 @@ function Blogs() {
 
 
         const likes = 0
-        axios.post("http://localhost:5000/api/blogs", { newTitle, date, newContent, likes }).then((res) => {
+        axios.post("https://blogs-prc7.onrender.com/api/blogs", { newTitle, date, newContent, likes }).then((res) => {
             console.log(res.data)
 
-            axios.get("http://localhost:5000/api/blogs").then((res) => {
+            axios.get("https://blogs-prc7.onrender.com/api/blogs").then((res) => {
                 console.log(res.data)
                 setBlogs(res.data)
             }).catch(() => {

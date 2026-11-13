@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from '../config/firebase';
-import { use } from 'react';
+
 
 function Login() {
     const navigate = useNavigate()
@@ -25,7 +25,7 @@ function Login() {
  
       })
 
-    }, []);
+    }, [navigate]);
 
     const handleLogin = (e) => {
         e.preventDefault();

@@ -11,12 +11,18 @@ const app = express();
 app.use(cors())
 
 // Middleware
-app.use(bodyParser.json());
+app.use(express.json());
 
 // MongoDB Connection
-mongoose.connect(`${process.env.MONGODB_URI}/blogDB1`).then(()=>{
-    console.log("Connection Successfull")
-})
+mongoose.connect(`${process.env.MONGODB_URI}/blogDB1`)
+  .then(() => {
+    console.log("Connection Successful");
+  })
+  .catch((e) => {
+    console.log("MongoDB Connection Error:", e.message);
+  });
+
+
 
 
 // Define Schema
